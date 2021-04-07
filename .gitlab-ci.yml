@@ -1,0 +1,9 @@
+# Create GitHub release
+framework_publish_github:
+  script:
+    - git clone -b add-sync-gitlab-tags-with-github-script https://gitlab-ci-token:${CI_JOB_TOKEN}@lab.jamit.de/pace/mobile/common.git tmp/common
+    - pip3 install -r tmp/common/scripts/screenshots/requirements.txt
+    - python3 tmp/common/scripts/tags/create_github_release.py -s 1101 -d telip007/CI-Release-Test 
+
+  only:
+    - tags
